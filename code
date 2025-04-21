@@ -1,0 +1,46 @@
+ 2-input multiplexer:
+
+Design:
+
+systemverilog
+Copy
+Edit
+module mux2 (
+    input  logic sel,
+    input  logic a,
+    input  logic b,
+    output logic y
+);
+    always_comb begin
+        if (sel == 1)
+            y = b;
+        else
+            y = a;
+    end
+endmodule
+Testbench:
+
+systemverilog
+Copy
+Edit
+module tb_mux2;
+    logic sel, a, b, y;
+
+    mux2 dut (
+        .sel(sel),
+        .a(a),
+        .b(b),
+        .y(y)
+    );
+
+    initial begin
+        // Stimulus generation
+        sel = 0; a = 0; b = 1; #10;
+        sel = 1; a = 0; b = 1; #10;
+        sel = 0; a = 1; b = 0; #10;
+        sel = 1; a = 1; b = 0; #10;
+
+        $display("Test finished.");
+        $finish;
+    end
+endmodule
