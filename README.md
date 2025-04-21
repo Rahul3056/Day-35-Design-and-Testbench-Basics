@@ -1,6 +1,4 @@
-Here is the detailed explanation for:
 
----
 
 ### **Day 35: Design and Testbench Basics**
 
